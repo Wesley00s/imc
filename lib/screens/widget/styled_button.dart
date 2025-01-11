@@ -4,8 +4,9 @@ import '../../res/app_color.dart';
 
 class StyledButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final String text;
 
-  const StyledButton({super.key, required this.onPressed});
+  const StyledButton({super.key, required this.onPressed, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +15,24 @@ class StyledButton extends StatelessWidget {
         elevation: const WidgetStatePropertyAll(15),
         foregroundColor: WidgetStateProperty.all(Colors.white),
         backgroundColor: WidgetStateProperty.all(AppColor.primaryColor),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          ),
+        ),
       ),
       onPressed: onPressed,
-      child: const Row(
+      child: Row(
         children: [
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Calcular',
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(text,
                     style:
-                        TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                        const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   ),
                 ),
               ],

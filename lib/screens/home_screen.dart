@@ -3,7 +3,6 @@ import 'package:imc/res/app_color.dart';
 import 'package:imc/screens/widget/gender_dropdown.dart';
 import 'package:imc/screens/widget/imc_table.dart';
 import 'package:imc/screens/widget/styled_button.dart';
-
 import '../model/Result.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,13 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColor.primaryColor,
         foregroundColor: Colors.white,
         title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Calculadora IMC',
-              style: TextStyle(fontWeight: FontWeight.bold),
+                'Calculadora IMC',
+                style : TextStyle(fontWeight: FontWeight.bold)
             ),
           ],
-        ),
+        )
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               const Text(
-                'Descubra seu índice de Massa Corporal',
+                'Descubra seu índice de massa corporal',
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(
@@ -116,15 +116,26 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               StyledButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/result_screen',
-                    arguments: {
-                      'result':
-                          Result.calcResult(weight!, height!, selectedGender!)
-                    },
-                  );
-                },
+                  if (weight != null || height != null || selectedGender != null) {
+                    Navigator.pushNamed(
+                      context,
+                      '/result_screen',
+                      arguments: {
+                        'result': Result.calcResult(weight!, height!, selectedGender!),
+                      },
+                    );
+                }
+                else {
+                   ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                            'Por favor, preencha ou selecione todos os campos antes de continuar!',
+                            style: TextStyle(fontSize: 20)),
+                        backgroundColor: AppColor.primaryColor,
+                      ),
+                    );
+                  }
+                }, text: 'Calcular',
               ),
               const SizedBox(
                 height: 50,
