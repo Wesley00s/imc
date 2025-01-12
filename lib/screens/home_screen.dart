@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const TextInputType.numberWithOptions(decimal: true),
                 decoration: InputDecoration(
                   labelText: 'Altura (cm)',
-                  hintText: '0.0',
+                  hintText: '0',
                   hintStyle:
                       const TextStyle(color: Colors.black26, fontSize: 16),
                   border: OutlineInputBorder(
@@ -103,13 +103,15 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              GenderDropdown(
-                selectedGender: selectedGender,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGender = value;
-                  });
-                },
+              SizedBox(child:
+                GenderDropdown(
+                  selectedGender: selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedGender = value;
+                    });
+                  },
+                ),
               ),
               const SizedBox(
                 height: 20,

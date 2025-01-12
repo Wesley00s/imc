@@ -70,13 +70,16 @@ class _ResultScreenState extends State<ResultScreen> {
               Container(
                 width: 350,
                 height: 250,
-                color: AppColor.primaryColor,
+                decoration: BoxDecoration(
+                  color: AppColor.primaryColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 child: Column(
                   children: [
                     Text(
                       'ATENÇÃO',
                       style: TextStyle(
-                        fontSize: 35,
+                        fontSize: 29,
                         fontWeight: FontWeight.bold,
                         color: AppColor.tertiaryColor,
                       ),

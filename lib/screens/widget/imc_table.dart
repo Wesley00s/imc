@@ -10,16 +10,16 @@ class IMCTable extends StatelessWidget {
     return DataTable(
       border: TableBorder.all(
         width: .7,
-        color: Colors.grey,
+        color: AppColor.tableColor,
         borderRadius: BorderRadius.circular(10),
       ),
-      columns: const [
-        DataColumn(
-          label: Text(
-            'IMC (kg/m²)',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        columns: const [
+          DataColumn(
+            label: Text(
+              'IMC (Kg/m²)',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
           ),
-        ),
         DataColumn(
           label: Text(
             'Classificação',
@@ -52,22 +52,15 @@ class IMCTable extends StatelessWidget {
         DataRow(
           color: WidgetStateProperty.all(AppColor.secondaryColor),
           cells: const [
-            DataCell(Text('De 30 a 34,9')),
-            DataCell(Text('Obesidade Grau I')),
-          ],
-        ),
-        DataRow(
-          color: WidgetStateProperty.all(AppColor.secondaryColor),
-          cells: const [
-            DataCell(Text('De 35 a 39,9')),
-            DataCell(Text('Obesidade Grau II')),
+            DataCell(Text('De 30 a 39,9')),
+            DataCell(Text('Obesidade')),
           ],
         ),
         DataRow(
           color: WidgetStateProperty.all(AppColor.secondaryColor),
           cells: const [
             DataCell(Text('Igual ou maior que 40')),
-            DataCell(Text('Obesidade Grau III')),
+            DataCell(Text('Obesidade Grave')),
           ],
         ),
       ],

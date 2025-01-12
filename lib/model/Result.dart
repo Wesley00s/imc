@@ -51,7 +51,7 @@ class Result {
       }
       imcResponse = "Sobrepeso.";
     }
-    else if (value >= 30.0 && value <= 34.9) {
+    else if (value >= 30.0 && value <= 39.9) {
       switch (gender) {
         case 'Masculino':
           assetImage = const AssetImage(AppMedia.obeseMale1);
@@ -60,18 +60,7 @@ class Result {
           assetImage = const AssetImage(AppMedia.obeseFemale1);
           break;
       }
-      imcResponse = "Obesidade grau I";
-    }
-    else if (value >= 35.0 && value <= 39.9) {
-      switch (gender) {
-        case 'Masculino':
-          assetImage = const AssetImage(AppMedia.obeseMale2);
-          break;
-        case 'Feminino':
-          assetImage = const AssetImage(AppMedia.obeseFemale2);
-          break;
-      }
-      imcResponse = "Obesidade grau II";
+      imcResponse = "Obesidade";
     }
     else {
       switch (gender) {
@@ -82,7 +71,7 @@ class Result {
           assetImage = const AssetImage(AppMedia.obeseFemale3);
           break;
       }
-      imcResponse = "Obesidade grau III";
+      imcResponse = "Obesidade grave";
     }
     return Result(value: value, imcResponse: imcResponse, decorationImage: DecorationImage(image: assetImage));
   }

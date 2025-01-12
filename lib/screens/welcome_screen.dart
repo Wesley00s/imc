@@ -22,6 +22,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Image.asset(
               'assets/images/background.png',
               fit: BoxFit.cover,
+              width: 350,
+              height: 350
             ),
             const Text(
               'Bem-vindo(a) ao nosso aplicativo de cálculo de índice de massa corporal!',
