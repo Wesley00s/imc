@@ -18,18 +18,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 150),
+            const SizedBox(height: 170),
             Image.asset(
               'assets/images/background.png',
               fit: BoxFit.cover,
-              width: 350,
-              height: 350
+              width: 270,
+              height: 260
             ),
+
+            const SizedBox(height: 35),
+
             const Text(
               'Bem-vindo(a) ao nosso aplicativo de cálculo de índice de massa corporal!',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.normal,
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
@@ -38,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const SizedBox(height: 20),
 
             SizedBox(
-              width: 350,
+              width: 300,
               child :
               StyledButton(
                 onPressed: () {

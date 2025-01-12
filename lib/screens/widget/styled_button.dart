@@ -32,7 +32,7 @@ class StyledButton extends StatelessWidget {
                   padding: const EdgeInsets.all(5.0),
                   child: Text(text,
                     style:
-                        const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                        const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                 ),
               ],

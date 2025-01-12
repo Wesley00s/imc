@@ -116,28 +116,32 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              StyledButton(
-                onPressed: () {
-                  if (weight != null || height != null || selectedGender != null) {
-                    Navigator.pushNamed(
-                      context,
-                      '/result_screen',
-                      arguments: {
-                        'result': Result.calcResult(weight!, height!, selectedGender!),
-                      },
-                    );
-                }
-                else {
-                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: const Text(
-                            'Por favor, preencha ou selecione todos os campos antes de continuar!',
-                            style: TextStyle(fontSize: 20)),
-                        backgroundColor: AppColor.primaryColor,
-                      ),
-                    );
-                  }
-                }, text: 'Calcular',
+              SizedBox(
+                width: 300,
+                child:
+                  StyledButton(
+                    onPressed: () {
+                      if (weight != null || height != null || selectedGender != null) {
+                        Navigator.pushNamed(
+                          context,
+                          '/result_screen',
+                          arguments: {
+                            'result': Result.calcResult(weight!, height!, selectedGender!),
+                          },
+                        );
+                    }
+                    else {
+                       ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                                'Por favor, preencha ou selecione todos os campos antes de continuar!',
+                                style: TextStyle(fontSize: 20)),
+                            backgroundColor: AppColor.primaryColor,
+                          ),
+                        );
+                      }
+                    }, text: 'Calcular',
+                  ),
               ),
               const SizedBox(
                 height: 50,
