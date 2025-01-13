@@ -15,7 +15,7 @@ class StyledButton extends StatelessWidget {
         elevation: const WidgetStatePropertyAll(15),
         foregroundColor: WidgetStateProperty.all(Colors.white),
         backgroundColor: WidgetStateProperty.all(AppColor.primaryColor),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
           ),
@@ -29,10 +29,11 @@ class StyledButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(text,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    text,
                     style:
-                        const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                        const TextStyle(fontWeight: FontWeight.normal, fontSize: 18),
                   ),
                 ),
               ],
