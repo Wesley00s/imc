@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:imc/res/media.dart';
 import 'package:imc/screens/widget/styled_button.dart';
-import 'package:imc/screens/home_screen.dart';
-
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
@@ -15,18 +14,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 170),
             Image.asset(
-              'assets/images/background.png',
+              AppMedia.logo,
               fit: BoxFit.cover,
-              width: 270,
-              height: 260
+              height: 120
             ),
 
-            const SizedBox(height: 35),
+            const SizedBox(height: 40),
 
             const Text(
               'Bem-vindo(a) ao nosso aplicativo de cálculo de índice de massa corporal!',
@@ -38,19 +38,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               textAlign: TextAlign.center,
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
 
-            SizedBox(
-              width: 300,
-              child :
-              StyledButton(
-                onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/home_screen'
-                    );
-                }, text: 'Vamos iniciar',
-              ),
+            StyledButton(
+              onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/home_screen'
+                  );
+              },
+              text: 'Vamos iniciar',
             ),
           ],
         ),
