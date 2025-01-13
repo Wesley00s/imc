@@ -24,19 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColor.primaryColor,
-        foregroundColor: Colors.white,
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-                'Calculadora IMC',
-                style : TextStyle(fontWeight: FontWeight.bold)
-            ),
-          ],
-        )
-      ),
+          centerTitle: true,
+          backgroundColor: AppColor.primaryColor,
+          foregroundColor: Colors.white,
+          title: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Calculadora IMC',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+            ],
+          )),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -103,8 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(child:
-                GenderDropdown(
+              SizedBox(
+                child: GenderDropdown(
                   selectedGender: selectedGender,
                   onChanged: (value) {
                     setState(() {
@@ -116,32 +113,34 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                width: 300,
-                child:
-                  StyledButton(
-                    onPressed: () {
-                      if (weight != null || height != null || selectedGender != null) {
-                        Navigator.pushNamed(
-                          context,
-                          '/result_screen',
-                          arguments: {
-                            'result': Result.calcResult(weight!, height!, selectedGender!),
-                          },
-                        );
-                    }
-                    else {
-                       ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text(
-                                'Por favor, preencha ou selecione todos os campos antes de continuar!',
-                                style: TextStyle(fontSize: 20)),
-                            backgroundColor: AppColor.primaryColor,
-                          ),
-                        );
-                      }
-                    }, text: 'Calcular',
-                  ),
+              StyledButton(
+                onPressed: () {
+                  if (weight != null ||
+                      height != null ||
+                      selectedGender != null) {
+                    Navigator.pushNamed(
+                      context,
+                      '/result_screen',
+                      arguments: {
+                        'result': Result.calcResult(
+                            weight!,
+                            height!,
+                            selectedGender!
+                        ),
+                      },
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                            'Por favor, preencha ou selecione todos os campos antes de continuar!',
+                            style: TextStyle(fontSize: 18)),
+                        backgroundColor: AppColor.primaryColor,
+                      ),
+                    );
+                  },
+                },
+                text: 'Calcular',
               ),
               const SizedBox(
                 height: 50,
