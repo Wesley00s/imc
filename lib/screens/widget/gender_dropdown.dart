@@ -12,21 +12,23 @@ class GenderDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
+
     return DropdownButton<String>(
       value: selectedGender,
-      items: const [
+      items: [
         DropdownMenuItem(
           value: "Masculino",
           child: Padding(
-            padding: EdgeInsets.only(right: 250),
-            child: Text("Masculino"),
+            padding: EdgeInsets.only(right: deviceWidth * 0.55),
+            child: const Text("Masculino"),
           ),
         ),
         DropdownMenuItem(
           value: "Feminino",
           child: Padding(
-            padding: EdgeInsets.only(right: 250),
-            child: Text("Feminino"),
+            padding: EdgeInsets.only(right: deviceWidth * 0.55),
+            child: const Text("Feminino"),
           ),
         ),
       ],
