@@ -14,4 +14,6 @@ class AppMedia {
   static const obeseFemale1 = '$_baseImage/obese_female.png'; // IMAGEM MODIFICADA: obeseFemale
   static const obeseFemale2 = '$_baseImage/severely_obese_female.png'; // IMAGEM MODIFICADA: severelyObeseFemale
   static const obeseFemale3 = '$_baseImage/obese_female_3.png'; // IMAGEM A SER RETIRADA
+
+  static const logo = '$_baseImage/logo.png';
 }
