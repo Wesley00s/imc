@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         backgroundColor: AppColor.primaryColor,
                       ),
                     );
-                  },
+                  }
                 },
                 text: 'Calcular',
               ),
