@@ -18,7 +18,7 @@ class Result {
     String imcResponse = "Indefinido ainda";
     AssetImage assetImage = const AssetImage(AppMedia.normalMale);
 
-    if (value <= 18.5) {
+    if (value <= 18.59) {
       switch (gender) {
         case 'Masculino':
           assetImage = const AssetImage(AppMedia.underweightMale);
@@ -29,7 +29,7 @@ class Result {
       }
       imcResponse = "Abaixo do peso";
     }
-    else if (value >= 18.6 && value <= 24.9) {
+    else if (value >= 18.6 && value <= 24.99) {
       switch (gender) {
         case 'Masculino':
           assetImage = const AssetImage(AppMedia.normalMale);
@@ -40,7 +40,7 @@ class Result {
       }
       imcResponse = "Peso normal";
     }
-    else if (value >= 25.0 && value <= 29.9) {
+    else if (value >= 25.0 && value <= 29.99) {
       switch (gender) {
         case 'Masculino':
           assetImage = const AssetImage(AppMedia.overweightMale);
@@ -51,13 +51,13 @@ class Result {
       }
       imcResponse = "Sobrepeso.";
     }
-    else if (value >= 30.0 && value <= 39.9) {
+    else if (value >= 30.0 && value <= 39.99) {
       switch (gender) {
         case 'Masculino':
-          assetImage = const AssetImage(AppMedia.obeseMale1);
+          assetImage = const AssetImage(AppMedia.obeseMale);
           break;
         case 'Feminino':
-          assetImage = const AssetImage(AppMedia.obeseFemale1);
+          assetImage = const AssetImage(AppMedia.obeseFemale);
           break;
       }
       imcResponse = "Obesidade";
@@ -65,16 +65,15 @@ class Result {
     else {
       switch (gender) {
         case 'Masculino':
-          assetImage = const AssetImage(AppMedia.obeseMale3);
+          assetImage = const AssetImage(AppMedia.severelyObeseMale);
           break;
         case 'Feminino':
-          assetImage = const AssetImage(AppMedia.obeseFemale3);
+          assetImage = const AssetImage(AppMedia.severelyObeseFemale);
           break;
       }
       imcResponse = "Obesidade grave";
     }
     return Result(value: value, imcResponse: imcResponse, decorationImage: DecorationImage(image: assetImage));
   }
-
 }
 
