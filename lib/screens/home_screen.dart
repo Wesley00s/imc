@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:imc/res/app_color.dart';
 import 'package:imc/screens/widget/gender_dropdown.dart';
 import 'package:imc/screens/widget/imc_table.dart';
 import 'package:imc/screens/widget/styled_button.dart';
+
 import '../model/Result.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,6 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))
+                ],
                 decoration: InputDecoration(
                   labelText: 'Peso (Kg)',
                   hintText: '0.0',
@@ -80,6 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))
+                ],
                 decoration: InputDecoration(
                   labelText: 'Altura (cm)',
                   hintText: '0',
@@ -115,30 +123,45 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               StyledButton(
                 onPressed: () {
-                  if (weight != null ||
-                      height != null ||
-                      selectedGender != null) {
-                    Navigator.pushNamed(
-                      context,
-                      '/result_screen',
-                      arguments: {
-                        'result': Result.calcResult(
-                            weight!,
-                            height!,
-                            selectedGender!
-                        ),
-                      },
-                    );
-                  } else {
+                  if (weight != null &&
+                      height != null &&
+                      selectedGender != null &&
+                      weight!.isNotEmpty &&
+                      height!.isNotEmpty &&
+                      selectedGender!.isNotEmpty) {
+                    if (double.parse(weight!) > 0 &&
+                        double.parse(height!) > 0) {
+                      Navigator.pushNamed(
+                        context,
+                        '/result_screen',
+                        arguments: {
+                          'result': Result.calcResult(
+                              weight!, height!, selectedGender!),
+                        },
+                      );
+                      return;
+                    }
+
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: const Text(
-                            'Por favor, preencha ou selecione todos os campos antes de continuar!',
+                            'Por favor, preencha os campos com valores válidos!',
                             style: TextStyle(fontSize: 18)),
                         backgroundColor: AppColor.primaryColor,
                       ),
                     );
+
+                    return;
                   }
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text(
+                          'Por favor, preencha ou selecione todos os campos antes de continuar!',
+                          style: TextStyle(fontSize: 18)),
+                      backgroundColor: AppColor.primaryColor,
+                    ),
+                  );
                 },
                 text: 'Calcular',
               ),
